@@ -1,6 +1,7 @@
-package com.stoyan.heyapp;
+package com.stoyan.heyapp.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
+import com.stoyan.heyapp.ChatActivity;
+import com.stoyan.heyapp.R;
 
 import java.util.List;
+
+import com.stoyan.heyapp.models.ModelUser;
 
 public class AdapterUsers extends  RecyclerView.Adapter<AdapterUsers.MyHolder>{
 
@@ -38,6 +43,7 @@ public class AdapterUsers extends  RecyclerView.Adapter<AdapterUsers.MyHolder>{
     @Override
     public void onBindViewHolder(@NonNull MyHolder myHolder, int i) {
         //get data
+        final String hisUID  = userList.get(i).getUid();
         String userImage =userList.get(i).getImage();
         String userName =userList.get(i).getName();
         final String userEmail =userList.get(i).getEmail();
@@ -58,7 +64,13 @@ public class AdapterUsers extends  RecyclerView.Adapter<AdapterUsers.MyHolder>{
         myHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, ""+userEmail, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(context, ""+userEmail, Toast.LENGTH_SHORT).show();
+                /*Click user from user list to start chatting/messaging
+                * Start activity by putting UID of receiver
+                * we will use that UID to identify the user we are gonna chat*/
+                Intent intent = new Intent(context, ChatActivity.class);
+                intent.putExtra("hisUid", hisUID);
+                context.startActivity(intent);
             }
         });
     }

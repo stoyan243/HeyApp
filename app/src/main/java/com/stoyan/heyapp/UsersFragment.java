@@ -30,7 +30,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.text.TextUtils.isEmpty;
+import com.stoyan.heyapp.adapters.AdapterUsers;
+import com.stoyan.heyapp.models.ModelUser;
 
 
 /**

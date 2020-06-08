@@ -1,4 +1,4 @@
-package com.stoyan.heyapp;
+package com.stoyan.heyapp.models;
 
 public class ModelUser {
     //use same name as in firebase database
